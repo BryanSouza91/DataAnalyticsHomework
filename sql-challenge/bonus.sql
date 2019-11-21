@@ -44,7 +44,7 @@ drop view avg_salary;
 
 create view 
 	avg_salary as 
-		select round(avg(s.salary),2) as avg_salary,t.title
+		select t.title,round(avg(s.salary),2) as avg_salary
 		from salaries s
 		inner join titles t on t.emp_no = s.emp_no
 		group by t.title
