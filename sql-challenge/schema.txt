@@ -1,0 +1,48 @@
+departments
+-
+id serial PK
+dept_no VARCHAR
+dept_name VARCHAR
+
+
+dept_emp
+-
+id serial PK
+emp_no INTEGER
+dept_no VARCHAR
+from_date date
+to_date date
+
+dept_manager
+-
+id serial PK
+dept_no VARCHAR
+emp_no INTEGER
+from_date date
+to_date date
+
+employees
+-
+id serial PK
+emp_no INTEGER
+birth_date date
+first_name VARCHAR
+last_name VARCHAR
+gender VARCHAR
+hire_date date
+
+salaries
+-
+id serial PK
+emp_no INTEGER
+salary INTEGER
+from_date date
+to_date date
+
+titles
+-
+id serial PK
+emp_no INTEGER
+title VARCHAR
+from_date date
+to_date date
