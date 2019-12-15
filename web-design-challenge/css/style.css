@@ -1,0 +1,55 @@
+html, body {
+    font-family: Ubuntu;
+    background: rgb(196, 196, 196);
+    overflow-x: hidden;
+}
+p {
+    color: black;
+}
+h1 {
+    color: black;
+}
+/* unvisited link */
+a:link {
+    text-decoration:none;
+}
+
+/* visited link */
+a:visited {
+    text-decoration:none;
+}
+
+/* mouse over link */
+a:hover {
+    text-decoration:none;
+}
+
+/* selected link */
+a:active {
+    text-decoration:none;
+}
+.img-grid {
+    overflow: hidden;
+}
+.img-grid img {
+    width: 100%;
+}
+
+/*  Extra small devices (portrait phones, less than 576px) */
+/* // No media query since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px)
+{}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px)
+{}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px)
+{}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px)
+{}
