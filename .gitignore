@@ -1,4 +1,6 @@
 config.py
 __pycache__
+.ipynb-checkpoints/
 .ipynb-checkpoints
+.vscode/
 .vscode
