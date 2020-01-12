@@ -2,21 +2,32 @@
 var tableData = data;
 
 // YOUR CODE HERE!
-
-// Select the datetime input by user
-var dateTime = d3.select("#datetime");
-
+var filterButton = d3.select("#filter-btn");
+var tableBody = d3.select("tbody");
 
 // Function to handle input change
-function handleChange(event) {
+filterButton.on("click", function () {
 
-  // Finally, add the summary stats to the `ul` tag
-  var list = d3.select(".summary");
+    // Select the datetime input by user
+    var dateTime = d3.select("#datetime")
+    console.log(dateTime);
 
-  list.html("");
-  list.append("li").text(`Mean: ${mean}`);
-  list.append("li").text(`Median: ${median}`);
-  list.append("li").text(`Mode: ${mode}`);
-  list.append("li").text(`Variance: ${variance}`);
-  list.append("li").text(`Standard Deviation: ${stDev}`);
+    var dateTimeValue = dateTime.property("value");
+    console.log(dateTimeValue);
+
+    // Filter data by datetime
+    var filteredData = tableData.filter(each => each.datetime === dateTimeValue);
+    console.log(filteredData);
+
+    // Clear table contents
+    tableBody.html("");
+    var tableRow = tableBody.append("tr")
+    // Append contents from on search data
+    tableRow.append("td").text(data.map(each => each.datetime));
+    tableRow.append("td").text(data.map(each => each.city));
+    tableRow.append("td").text(data.map(each => each.state));
+    tableRow.append("td").text(data.map(each => each.country));
+    tableRow.append("td").text(data.map(each => each.shape));
+    tableRow.append("td").text(data.map(each => each.durationMinutes));
+    tableRow.append("td").text(data.map(each => each.comments));
 });
