@@ -1,5 +1,5 @@
 let usaCoords = [39.8283, -98.5795];
-let mapZoomLevel = 2;
+let mapZoomLevel = 2.5;
 
 // Create the createMap function
 function createMap(earthquakes) {
@@ -52,7 +52,7 @@ function createMarkers(response) {
         }).bindTooltip("<div class='popup'><h2>" + quake.properties.place + "</h2>"
             + "<h3> Magnitude: " + quake.properties.mag
             + "<br> Depth of Epicenter: " + quake.geometry.coordinates[2]
-            + "<br> Time: " + new Date(quake.properties.updated)
+            + "<br> Time: " + new Date(quake.properties.time)
             + "</h3></div>");
 
         quakeMarkers.push(quakeMarker);
@@ -61,4 +61,4 @@ function createMarkers(response) {
     createMap(L.layerGroup(quakeMarkers));
 }
 // Perform an API call to the Earthquake Notification Service API to get quake information. Call createMarkers when complete
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_day.geojson", createMarkers);
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson", createMarkers);
