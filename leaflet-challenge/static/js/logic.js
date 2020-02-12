@@ -35,6 +35,17 @@ function createMarkers(response) {
     // Initialize an array to hold quake markers
     let quakeMarkers = [];
 
+    function markerColor(num) {
+        if (num <= 1)
+            return "yellow";
+        else if (num > 1 && num <= 2.5)
+            return "orange";
+        else if (num > 2.5 && num <= 4.5)
+            return "orangered";
+        else
+            return "red";
+    }
+
 
     // Loop through the quakes array
     // For each quake, create a marker and bind a popup with the quake's name, magnitude, and depth
@@ -45,14 +56,14 @@ function createMarkers(response) {
         // Add the marker to the quakeMarkers array
         let quakeMarker = L.marker([quake.geometry.coordinates[1], quake.geometry.coordinates[0]], {
             icon: L.divIcon({
-                html: '<i class="fa fa-exclamation-triangle" style="color: red"></i>',
+                html: `<i class="fa fa-exclamation-triangle" style="color: ${markerColor(quake.properties.mag)}"></i>`,
                 iconSize: [20, 20],
                 className: 'myDivIcon'
             })
         }).bindTooltip("<div class='popup'><h2>" + quake.properties.place + "</h2>"
             + "<h3> Magnitude: " + quake.properties.mag
             + "<br> Depth of Epicenter: " + quake.geometry.coordinates[2]
-            + "<br> Time: " + new Date(quake.properties.time)
+            + "km<br> Time: " + new Date(quake.properties.time)
             + "</h3></div>");
 
         quakeMarkers.push(quakeMarker);
@@ -61,4 +72,4 @@ function createMarkers(response) {
     createMap(L.layerGroup(quakeMarkers));
 }
 // Perform an API call to the Earthquake Notification Service API to get quake information. Call createMarkers when complete
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson", createMarkers);
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson", createMarkers);
